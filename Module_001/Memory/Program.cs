@@ -101,7 +101,13 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        ClassWithDtor.TestGC();
+        string s1 = "hello";
+        string s2 = s1;
+        s1 += " world";
+        Console.WriteLine($"s1={s1}, s2={s2}");
+
+        // Recursion();
+        // ClassWithDtor.TestGC();
 
         // -- Demostrate string immutability
         // string s1 = "hi";
