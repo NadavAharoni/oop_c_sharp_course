@@ -23,6 +23,10 @@ public class ArrayProcessor
         }
     }
 
+    public static void Sum(ref double total, double value)
+    {
+        total += value;
+    }
     public static void TestDouble()
     {   
         double[] numbers = { 1.5, 2.5, 3.5 };
@@ -37,6 +41,22 @@ public class ArrayProcessor
         ProcessArray(numbers2, sumCalculator.AddToSum);
         Console.WriteLine($"Total sum after adding more (double):" +
             $"{sumCalculator.GetSum()}");
+
+        // 2025-12-02: We will examine the following techniques
+        // in the next lesson
+        double sum1 = 0;
+        UnaryAction f1 = (double item) => { Sum(ref sum1, item); };
+        ArrayProcessor.ProcessArray(numbers, f1);
+        Console.WriteLine($"Total sum using lambda 1: {sum1}");
+
+        double sum2 = 0;
+        UnaryAction f2 = (double item) => { sum2 += item; };
+        ArrayProcessor.ProcessArray(numbers, f2);
+        Console.WriteLine($"Total sum using lambda 2: {sum2}");
+
+        double sum3 = 0;
+        ArrayProcessor.ProcessArray(numbers, item => sum3 += item );
+        Console.WriteLine($"Total sum using lambda 3: {sum3}");
     }
 
     public static void Test()
