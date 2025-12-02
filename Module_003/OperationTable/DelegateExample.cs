@@ -30,6 +30,18 @@ public class DelegateExample
         return bOp(a, b);
     }
 
+    public static void TestApplyOperation()
+    {
+        double val1 = 5;
+        double val2 = 10;
+
+        BinaryOperation bOp1 = Add;
+        double result1 = bOp1(val1, val2);
+
+        bOp1 = Multiply;
+        result1 = bOp1(val1, val2);
+    }
+
     public static void TestDelegateExample()
     {
         double val1 = 3;
