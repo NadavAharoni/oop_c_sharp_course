@@ -78,6 +78,9 @@ internal class Program
 
     private static void Main(string[] args)
     {
+        ArrayProcessor.Test();
+        return;
+
         Fraction f1 = new Fraction(1, 3);
         Fraction f2 = new Fraction(1, 4);
 
