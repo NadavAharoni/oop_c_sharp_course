@@ -78,7 +78,7 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        ArrayProcessor.Test();
+        ArrayProcessor.TestDouble();
         return;
 
         Fraction f1 = new Fraction(1, 3);
