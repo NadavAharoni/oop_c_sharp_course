@@ -25,6 +25,11 @@ public class DelegateExample
         return bOp(uOp(a), uOp(b));
     }
 
+    public static double ApplyOperation(BinaryOperation bOp, double a, double b)
+    {
+        return bOp(a, b);
+    }
+
     public static void TestDelegateExample()
     {
         double val1 = 3;
