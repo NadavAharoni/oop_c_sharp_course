@@ -17,15 +17,16 @@ public class DelegateExample
         return (a * a);
     }
 
-    public delegate double BinaryOperation(double a, double b);
+    // public delegate double BinaryOperation(double a, double b);
     public delegate double UnaryOperation(double a);
+    Func<double, double, double> fBinaryOp = Multiply;
 
-    public static double CombineOperations(BinaryOperation bOp, UnaryOperation uOp, double a, double b)
+    public static double CombineOperations(Func<double, double, double> bOp, UnaryOperation uOp, double a, double b)
     {
         return bOp(uOp(a), uOp(b));
     }
 
-    public static double ApplyOperation(BinaryOperation bOp, double a, double b)
+    public static double ApplyOperation(Func<double, double, double> bOp, double a, double b)
     {
         return bOp(a, b);
     }
@@ -40,7 +41,20 @@ public class DelegateExample
 
         bOp1 = Multiply;
         result1 = bOp1(val1, val2);
-    }
+
+        bOp1 = (a, b) => a - b; // Subtraction using lambda
+        result1 = bOp1(val1, val2);
+        Console.WriteLine($"TestApplyOperation #1: result1={result1}");
+
+        result1 = ApplyOperation( (a, b) => 2 * a - b, val1, val2);
+        Console.WriteLine($"TestApplyOperation #2: result1={result1}");
+
+        bOp1 = (a, b) =>
+        {
+            return a / b; 
+        }; // Division using lambda with block
+
+     }
 
     public static void TestDelegateExample()
     {
