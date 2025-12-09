@@ -78,9 +78,10 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        InternalFunction.Test();
+        DelegateExample.TestApplyOperation();
 
-        ArrayProcessor.TestDouble();
+        // InternalFunction.Test();
+        // ArrayProcessor.TestDouble();
         return;
 
         Fraction f1 = new Fraction(1, 3);
