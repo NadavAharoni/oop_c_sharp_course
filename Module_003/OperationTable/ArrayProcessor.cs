@@ -1,6 +1,6 @@
 public class ArrayProcessor
 {
-    public delegate void UnaryAction(double a);
+    // public delegate void UnaryAction(double a);
 
     public static void PrintDouble(double value)
     {
@@ -15,7 +15,7 @@ public class ArrayProcessor
         }
     }
 
-    public static void ProcessArray(double[] array, UnaryAction processor)
+    public static void ProcessArray(double[] array, Action<double> processor)
     {
         foreach (double item in array)
         {
@@ -45,12 +45,12 @@ public class ArrayProcessor
         // 2025-12-02: We will examine the following techniques
         // in the next lesson
         double sum1 = 0;
-        UnaryAction f1 = (double item) => { Sum(ref sum1, item); };
+        Action<double> f1 = (double item) => { Sum(ref sum1, item); };
         ArrayProcessor.ProcessArray(numbers, f1);
         Console.WriteLine($"Total sum using lambda 1: {sum1}");
 
         double sum2 = 0;
-        UnaryAction f2 = (double item) => { sum2 += item; };
+        Action<double> f2 = (double item) => { sum2 += item; };
         ArrayProcessor.ProcessArray(numbers, f2);
         Console.WriteLine($"Total sum using lambda 2: {sum2}");
 
@@ -68,6 +68,8 @@ public class ArrayProcessor
 
         int totalSum = sumCalculator.GetSum(); // Returns 15
         Console.WriteLine($"Total sum: {totalSum}");
+
+
     }
 }
 
