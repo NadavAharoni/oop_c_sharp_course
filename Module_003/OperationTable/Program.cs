@@ -78,6 +78,8 @@ internal class Program
 
     private static void Main(string[] args)
     {
+        InternalFunction.Test();
+
         ArrayProcessor.TestDouble();
         return;
 
