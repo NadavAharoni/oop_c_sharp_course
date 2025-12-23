@@ -76,9 +76,62 @@ internal class Program
 
     delegate void F(int val);
 
+    public static double Add(double a, double b)
+    {
+        return a + b;
+    }
+
     private static void Main(string[] args)
     {
-        DelegateExample.TestApplyOperation();
+        GenericOperationTable<Fraction> table_frac = new GenericOperationTable<Fraction>(
+            new List<Fraction>() { new Fraction(1, 2), new Fraction(2, 3), new Fraction(3, 4) },
+            new List<Fraction>() { new Fraction(1, 5), new Fraction(1, 6), new Fraction(1, 7) },
+            (Fraction a, Fraction b) => a + b
+        );
+
+        table_frac.Calculate();
+        Console.WriteLine(table_frac);
+        Console.WriteLine("===");
+
+        GenericOperationTable<string> table_str = new GenericOperationTable<string>(
+            new List<string>() { "A", "B", "C" },
+            new List<string>() { "D", "E", "F" },
+            (string a, string b) => a + "_" + b
+        );
+        table_str.Calculate();
+        Console.WriteLine(table_str);
+
+        Console.WriteLine("===");
+        List<double> rows = new List<double>() { 1.0, 2.0, 3.0 };
+        List<double> columns = new List<double>() { 4.0, 5.0, 6.0 };
+        GenericOperationTable<double> table = new GenericOperationTable<double> (
+            rows, columns, Add
+        );
+
+        // (double a, double b) => a + b
+        table.Calculate();
+        Console.WriteLine(table);
+
+        // int d = 2;
+
+        //OperationTable.Operation op = (int x, int y) =>
+        //{
+        //    int result = 1;
+        //    for (int i = 0; i < y; i++)
+        //    {
+        //        result *= x;
+        //    }
+        //    return result / d;
+        //};
+
+        // OperationTable.Operation op = Add;
+        // OperationTable table = new OperationTable(op);
+        // table.Calculate();
+        // Console.WriteLine(table);
+
+        // Console.WriteLine($"table.results[1,1]={table.results[1, 1]}");
+
+        // DelegateExample.TestApplyOperation();
 
         // InternalFunction.Test();
         // ArrayProcessor.TestDouble();
@@ -118,23 +171,5 @@ internal class Program
         //Console.WriteLine($"c1={c1.count}, c2={c2.count}");
 
         return;
-
-        int d = 2;
-
-        OperationTable.Operation op = (int x, int y) =>
-        {
-            int result = 1;
-            for (int i = 0; i<y; i++)
-            {
-                result *= x;
-            }
-            return result / d;
-        };
-
-        OperationTable table = new OperationTable(op);
-        table.Calculate();
-        Console.WriteLine(table);
-
-        Console.WriteLine($"table.results[1,1]={table.results[1,1]}");
     }
 }
