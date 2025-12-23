@@ -29,6 +29,7 @@ class GenericOperationTable<T>
 
     public override string ToString()
     {
+        // calulate max width
         int maxWidth = 0;
         for (int row = 0; row < results.GetLength(0); row++)
         {
