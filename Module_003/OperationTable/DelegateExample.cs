@@ -36,7 +36,7 @@ public class DelegateExample
         double val1 = 5;
         double val2 = 10;
 
-        BinaryOperation bOp1 = Add;
+        Func<double, double, double> bOp1 = Add;
         double result1 = bOp1(val1, val2);
 
         bOp1 = Multiply;
