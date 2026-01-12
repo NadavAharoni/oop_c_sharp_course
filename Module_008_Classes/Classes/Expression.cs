@@ -7,7 +7,7 @@ namespace Classes
         MUL,
         DIV
     }
-    abstract class BaseExpression
+    public abstract class BaseExpression
     {
         public abstract double Evaluate();
     }
