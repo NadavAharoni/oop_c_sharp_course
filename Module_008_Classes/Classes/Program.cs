@@ -18,7 +18,8 @@ namespace Classes
             Console.WriteLine($"The result of the expression '{expression}' is: {result}");
 
             Console.WriteLine();
-            // Page p = new Page(); -> this line would cause a compilation error because the constructor is private
+            // Page p = new Page();
+            // ^ the line above would cause a compilation error because the constructor is private
             Console.WriteLine("Testing a Singleton Class");
             Page p1 = Page.getThePage();
             Page p2 = Page.getThePage();
